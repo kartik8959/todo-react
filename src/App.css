@@ -1,6 +1,27 @@
 .App {
   text-align: center;
 }
+.strike{
+  text-decoration: line-through;
+}
+.listItem{
+  cursor: pointer;
+}
+.container{
+  padding: 10px;
+  border: 1px solid rgba(167, 193, 207, 0.146);
+  display: flex;
+  width: 50%;
+ margin: auto;
+  align-items: center;
+  justify-content:center;
+  gap: 50px;
+}
+.container > div{
+  text-align: left;
+  width: 20%;
+  margin-top: 10px;
+}
 
 .App-logo {
   height: 40vmin;
@@ -22,6 +43,37 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.clear-btn,.form-btn{
+  margin-top: 20px;
+  padding: 10px;
+  width: 120px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  background-color: rgb(102, 62, 102);
+  color: #fff;
+  border: none;
+  box-shadow: 2px 8px 5px 7px;
+  cursor: pointer;
+}
+.form-input{
+  padding: 5px;
+  margin-top: 10px;
+}
+.form-input:focus{
+  outline: none;
+}
+.form-btn{
+width: 150px;
+padding: 5px;
+margin-left: 20px;
+}
+
+.dlt-btn{
+  padding: 5px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .App-link {

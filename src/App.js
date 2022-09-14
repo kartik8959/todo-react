@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Header from './Header';
+import data from  "./data.json";
+import TodoList from './TodoList';
+import Todoform from './Todoform';
 import './App.css';
 
 function App() {
-  return (
+  let  [toDoList,setToDoList]=useState(data);
+  function handleDelete(id){
+    let todos=toDoList.filter((item)=>{
+      return item.id !== id
+    })
+    setToDoList(todos)
+  }
+
+  function handleClear(){
+    let filteredTodo=toDoList.filter((todo)=>{
+      return !todo.complete
+    })
+
+    setToDoList(filteredTodo)
+  }
+
+  function handleToggle(id){
+    let mapped=toDoList.map((task)=>{
+      return task.id===id ? {...task,complete:!task.complete}:{...task}
+    })
+    setToDoList(mapped)
+  }
+  function addTodo(todoItem){
+    let copy=[...toDoList];
+    copy=[...copy, {id:toDoList.length+1,task:todoItem,
+    complete: false}];
+    setToDoList(copy);
+  }
+  return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <TodoList todolist={toDoList} handleToggle={handleToggle} handleDelete={handleDelete}/>
+      <button onClick={handleClear} className="clear-btn">Clear</button>
+      <Todoform addTodo={addTodo}/>
     </div>
   );
 }
